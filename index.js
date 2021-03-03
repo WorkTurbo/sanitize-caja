@@ -8,6 +8,7 @@ module.exports = function(_) {
 // https://bugzilla.mozilla.org/show_bug.cgi?id=255107
 function cleanUrl(url) {
     'use strict';
+    if (/^cid?/.test(url.getScheme())) return url.toString();
     if (/^https?/.test(url.getScheme())) return url.toString();
     if (/^mailto?/.test(url.getScheme())) return url.toString();
     if ('data' == url.getScheme() && /^image/.test(url.getPath())) {
